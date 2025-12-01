@@ -168,7 +168,7 @@
                 var href = link.dataset.url ? link.dataset.url.replace("=", "") + "=" : link.href;
                 var equals = href.indexOf("=");
                 if (equals == -1) {
-                    equals = href.length;
+                    equals = href.indexOf("#/") + 1 // for wave.webaim.org
                 }
                 if (href.startsWith("view-source:")) {
                     href = "view-source:";
