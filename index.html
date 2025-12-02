@@ -183,8 +183,17 @@
             setLinks(params.get("url"));
         }
 
+        const addScheme = url => {
+            if (url && !~url.indexOf("http")) url = `https://${url}`
+            return url
+        }
+
         document.getElementById("url").addEventListener("keyup", function (e) {
-            setLinks(e.target.value);
+            if (e.keyCode === 13) {
+                e.preventDefault()
+                e.target.value = addScheme(e.target.value)
+                setLinks(e.target.value)
+            } else if (e.target.validity.valid) setLinks(e.target.value);
         })
     </script>
 </body>
